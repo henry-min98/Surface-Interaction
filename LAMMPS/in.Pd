@@ -1,0 +1,27 @@
+log      surface
+
+units		real
+boundary        p p f
+
+atom_style	atomic
+read_data	data.gra
+
+group  bottom  id  1:18 
+group  top    id 19:45 
+
+pair_style reann
+pair_coeff * * 5.5 float
+
+thermo 100
+thermo_style  custom step temp pe ke etotal vol
+timestep 0.001
+dump  1 all custom 100 7.xyz id element x y z vx vy vz
+dump_modify 1 element Pd
+dump_modify 1 sort id 
+
+fix 1 top nvt temp 300 300 100
+fix 2 bottom setforce 0.0 0.0 0.0
+run 10000
+
+
+write_restart Restart.final

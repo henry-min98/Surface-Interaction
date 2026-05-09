@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#$ -N  vasp-job      # Specify job name
+#$ -pe smp 1
+#$ -q long
+
+module load   vasp/6.4.0        # Required modules
+mpirun -n 1 ./lmp_mpi -in in.Pd >out

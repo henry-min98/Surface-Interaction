@@ -1,0 +1,6 @@
+OUTCAR*
+XDATCAR*
+WAVECAR*
+CHGCAR*
+*.vasp
+.ipynb_checkpoints/
